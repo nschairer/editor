@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+
+}
+
+
+.text-editor {
+    background-color: #282c2f;
+    white-space: pre;
+    height: 500px;
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+    
+}
