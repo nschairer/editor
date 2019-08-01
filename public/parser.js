@@ -13,10 +13,9 @@ export default function parse(input) {
         if(colors[token.type]) {
             html += `<span style="color:${colors[token.type]}">${token.value}</span>`
         } else {
-            html += token.value
+            html += `<span>${token.value}</span>`
         }
     }
-    console.log(html)
     return html
 }
 

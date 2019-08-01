@@ -1,13 +1,16 @@
 
 //never match globally, want the first match
 const tokens_types = [
-    { regex: /^(select|where|is|from|group|by|having|like|and|between|case|when|then|end|else|create|delete|alter|table|insert|into|values|update|while|if|in)(?!([^\s\(\)\[\]\*\-\/]))/i, type: 'KEYWORD'},
-    { regex: /(--(.*)[\n\r]?|\/\*((.|\n)*)\*\/)/, type: 'COMMENT'},
+    //(?!([^\s\(\)\[\]\*-\/]))
+    { regex: /^(select|where|is|from|group|by|having|like|and|between|case|when|then|end|else|create|delete|alter|table|insert|into|values|update|while|if|in)(?![\w])/i, type: 'KEYWORD'},
+    { regex: /^--(.*)[\n\r]?/, type: 'COMMENT'},
+    { regex: /^\/\*((.|\n)*)\*\//, type: 'COMMENT'},
     { regex: /^(\*|=|\+|-|<|>)/, type: 'OPERATOR'},
     { regex: /^\s+/, type: 'SPACE'},
     { regex: /^(\(|\))/, type: 'PT'},
     { regex: /^(\[|\])/, type: 'SQBRACKET'},
-    { regex: /^([^\s]+)(?![\(|\)])/,  type: 'USERDEFINED'}
+    { regex: /^([^\s\)\(\[\]]+)/,  type: 'USERDEFINED'},
+    
 ]
 
 
@@ -38,6 +41,5 @@ export default function lexer(input_string) {
         tokens.push({type: 'NOTTRACKED', value: temp})
         isMatch = false
    }
-   console.log(tokens)
    return tokens
 }
