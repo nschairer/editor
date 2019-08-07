@@ -6,6 +6,7 @@ const tokens_types = [
     { regex: /^--(.*)[\n\r]?/, type: 'COMMENT'},
     { regex: /^\/\*((.|\n)*)\*\//, type: 'COMMENT'},
     { regex: /^(\*|=|\+|-|<|>)/, type: 'OPERATOR'},
+    { regex: /^\n+/, type: 'RETURN'},
     { regex: /^\s+/, type: 'SPACE'},
     { regex: /^(\(|\))/, type: 'PT'},
     { regex: /^(\[|\])/, type: 'SQBRACKET'},
@@ -41,5 +42,6 @@ export default function lexer(input_string) {
         tokens.push({type: 'NOTTRACKED', value: temp})
         isMatch = false
    }
+   console.log(tokens)
    return tokens
 }
